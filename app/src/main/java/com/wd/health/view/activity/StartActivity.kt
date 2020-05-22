@@ -39,7 +39,7 @@ class StartActivity:AppCompatActivity(),ViewPropertyAnimatorListener{
 
     override fun onAnimationEnd(view: View?) {
         //动画结束进入到主界面
-        startActivity<MainActivity>()
+        startActivity<LeadActivity>()
     }
 
     override fun onAnimationCancel(view: View?) {
