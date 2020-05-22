@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clipChildren="false"
     tools:context=".view.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/viewPager"
+        android:layout_weight="1"/>
+    <RadioGroup
+        android:clipChildren="false"
+        android:layout_width="match_parent"
+        android:background="@mipmap/the_bottom_bar"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:id="@+id/rg"
+        android:layout_height="@dimen/dp_50">
+        <RadioButton
+            android:layout_width="0dp"
+            android:button="@null"
+            android:layout_weight="1"
+            android:id="@+id/rb_1"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_20"
+            android:checked="true"
+            android:background="@drawable/home_selecter"
+            android:layout_height="match_parent"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:id="@+id/rb_2"
+            android:button="@null"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_40"
+            android:layout_weight="1.2"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/circle_selecter"
+            android:layout_height="@dimen/dp_60"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:button="@null"
+            android:id="@+id/rb_3"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_40"
+            android:layout_weight="1"
+            android:background="@drawable/video_selecter"
+            android:layout_height="match_parent"/>
+    </RadioGroup>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
