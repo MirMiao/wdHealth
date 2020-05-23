@@ -2,22 +2,11 @@ package com.wd.health.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.RadioGroup
-import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.wd.health.R
 import com.wd.health.adapter.FragmentAdapter
-import com.wd.health.base.BaseActivity
-import com.wd.health.contract.IContract
-import com.wd.health.entity.AEntity
-import com.wd.health.presenter.Presenter
-import com.wd.health.view.fragment.CircleFragment
-import com.wd.health.view.fragment.HomeFragment
-import com.wd.health.view.fragment.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
 
 class MainActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

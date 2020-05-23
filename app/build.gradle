@@ -22,7 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -56,5 +55,7 @@ dependencies {
     }
     //glide注解解析器
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
-
+    //cardview
+    compile 'com.android.support:cardview-v7:23.2.0'
+    implementation 'com.zyp.cardview:cardview:1.0.1'
 }
