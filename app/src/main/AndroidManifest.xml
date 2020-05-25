@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.MainActivity"/>
         <activity android:name=".view.activity.LeadActivity"/>
-        <activity android:name=".view.activity.UserHomeActivity"/>
+        <activity android:name=".view.activity.LoginActivity"/>
         <activity android:name=".view.activity.RegisterActivity"/>
         <activity android:name=".view.activity.StartActivity"/>
         <activity android:name=".view.activity.userActivity.MyFilesActivity"/>
@@ -25,7 +25,7 @@
         <activity android:name=".view.activity.userActivity.MyFallFriendActivity"/>
         <activity android:name=".view.activity.userActivity.MyTaskActivity"/>
         <activity android:name=".view.activity.userActivity.MySettingActivity"/>
-        <activity android:name=".view.activity.LoginActivity"
+        <activity android:name=".view.activity.UserHomeActivity"
             android:theme="@style/AppTheme.FullScreen"
             >
             <intent-filter>

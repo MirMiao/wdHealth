@@ -14,4 +14,5 @@ class MyCollectActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_collect_layout)
     }
+
 }

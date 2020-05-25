@@ -2,6 +2,8 @@ package com.bw.doctor.base.api
 import com.wd.health.entity.EmailCodeEntity
 import com.wd.health.entity.LoginEntity
 import com.wd.health.entity.RegEntity
+import com.wd.health.entity.userentity.FindUserConsumption
+import com.wd.health.entity.userentity.FindUserWalletEntity
 import io.reactivex.Observable
 import org.reactivestreams.Subscriber
 import retrofit2.http.*
@@ -30,4 +32,11 @@ interface ApiService {
                 @Field("pwd1") pwd1:String,
                 @Field("pwd2") pwd2:String
                 ):Observable<RegEntity>
+    //查找用户钱包
+    @GET(Api.Find_USER_WALLET)
+    fun findUserWallet(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserWalletEntity>
+    //查找用户消费明细
+    @GET(Api.FIND_USER_CONSUMPTION)
+    fun findUserConsumption(@Header("userId") userId:Int,@Header("sessionId") sessionId:String,
+                            @Query("page") page:Int, @Query("count") count:Int):Observable<FindUserConsumption>
 }

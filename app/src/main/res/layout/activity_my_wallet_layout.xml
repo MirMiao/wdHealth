@@ -47,7 +47,7 @@
              android:layout_height="@dimen/dp_116"/>
          <TextView
              android:layout_width="wrap_content"
-             android:text="999"
+             android:text="0"
              android:textSize="@dimen/sp_40"
              android:id="@+id/tv_walletNum"
              android:textColor="#3087ea"
@@ -106,6 +106,7 @@
          android:layout_width="match_parent"
          android:layout_below="@id/view"
          android:layout_marginLeft="@dimen/dp_20"
+         android:id="@+id/rv_wallet"
          android:layout_marginRight="@dimen/dp_20"
          android:layout_marginTop="@dimen/dp_20"
          android:layout_height="match_parent"/>
