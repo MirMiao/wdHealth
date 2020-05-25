@@ -12,6 +12,7 @@ import com.wd.health.contract.LoginContract
 import com.wd.health.entity.LoginEntity
 import com.wd.health.presenter.LogPresenter
 import com.wd.health.util.RsaCoder
+import com.wd.health.util.SaveAndGetUIdSessIdUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -62,12 +63,9 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
             override fun onClick(p0: View?) {
                startActivity<RegisterActivity>()
             }
-
         })
     }
-
     override fun initData() {
-
     }
 
     override fun layoutId(): Int {
@@ -75,10 +73,14 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
     }
 
     override fun seccess(loginEntity: LoginEntity) {
-        toast( loginEntity.message)
+        myToast(loginEntity.message)
+        if("0000".equals(loginEntity.status)){
+            //把用户的userId和sessionId存储起来
+           var  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+            saveAndGetUIdSessIdUtil.savaUserId(loginEntity.result.id)
+            saveAndGetUIdSessIdUtil.savaSessionId(loginEntity.result.sessionId)
+        }
     }
-
     override fun failur(throwable: Throwable) {
     }
-
 }
