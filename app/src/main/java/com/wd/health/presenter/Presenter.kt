@@ -2,8 +2,10 @@ package com.wd.health.presenter
 
 import android.content.Context
 import com.wd.health.base.mvp.BasePresenter
+import com.wd.health.contact.BannerContact
 import com.wd.health.contract.IContract
 import com.wd.health.entity.AEntity
+import com.wd.health.entity.BannerEntity
 import com.wd.health.model.Model
 
 /**

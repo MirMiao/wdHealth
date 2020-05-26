@@ -3,6 +3,7 @@ package com.wd.health.contract
 import com.wd.health.base.mvp.IBaseModel
 import com.wd.health.base.mvp.IBaseView
 import com.wd.health.entity.AEntity
+import com.wd.health.entity.BannerEntity
 import java.util.*
 
 /**
@@ -12,19 +13,26 @@ import java.util.*
  */
 interface IContract {
     interface IModel:IBaseModel{
-        fun getA(modelCallBack: ModelCallBack)
 
+        fun getA(modelCallBack: ModelCallBack)
         interface ModelCallBack{
             fun seccess(o: AEntity)
             fun failur(throwable: Throwable)
         }
+
     }
 
     interface IView:IBaseView{
         fun seccess(o: AEntity)
         fun failur(throwable: Throwable)
+
     }
     interface IPresenter{
         fun getA()
+
+
     }
+
+
+
 }

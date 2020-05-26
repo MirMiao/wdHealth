@@ -1,13 +1,11 @@
 package com.wd.health.model
 
-import android.util.Log
+
 import com.bw.doctor.base.utils.RetrofitUtils
 import com.wd.health.contract.IContract
 import com.wd.health.entity.AEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import org.greenrobot.eventbus.Subscribe
 
 /**
  * 时间 :2020/5/21  15:29
@@ -20,7 +18,7 @@ class Model:IContract.IModel {
           .subscribeOn(Schedulers.io())
           .observeOn(AndroidSchedulers.mainThread())
           .subscribe({
-              aEntity: AEntity ->modelCallBack.let {
+              aEntity: AEntity ->modelCallBack.let{
                modelCallBack.seccess(aEntity)
           }
           },{
