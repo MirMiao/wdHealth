@@ -1,6 +1,8 @@
 package com.wd.health.view.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -17,34 +19,29 @@ import org.jetbrains.anko.startActivity
  * 作者 :苗恒
  * 功能 :
  */
-class StartActivity:AppCompatActivity(),ViewPropertyAnimatorListener{
-  /*   private  var handler:Handler=object :Handler(){
-         override fun handleMessage(msg: Message) {
-             super.handleMessage(msg)
-             if(msg.what==1){
-              startActivity<MainActivity>()
-             }
-         }
-     }*/
+class StartActivity:AppCompatActivity(){
+    private var mTime = 3
+    private var mHandler: Handler = Handler()
+    private val mRunnable: Runnable = object : Runnable {
+        override fun run() {
+            // TODO: 倒计时逻辑
+           if(mTime == 1) {
+               startActivity<LeadActivity>()
+               //跳转成功存值
+           }
+            mTime--
+           tv_time_down.text = "倒计时:（${mTime}）秒"
+            // 每隔一秒调用
+             mHandler.postDelayed(this, 1_000L)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
-         //发送两秒的延迟
-         // handler.sendEmptyMessageDelayed(1,2000)
-        //缩小动画
-        ViewCompat.animate(imageView).scaleX(1.0f).scaleY(1.0f)
-            .setListener(this)
-            .setDuration(2000)
+
+        mHandler.removeCallbacks(mRunnable)
+        mHandler.postDelayed(mRunnable, 1_000L)
     }
 
-    override fun onAnimationEnd(view: View?) {
-        //动画结束进入到主界面
-        startActivity<LeadActivity>()
-    }
-
-    override fun onAnimationCancel(view: View?) {
-    }
-
-    override fun onAnimationStart(view: View?) {
-    }
 }

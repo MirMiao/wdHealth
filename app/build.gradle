@@ -49,6 +49,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //anko哭
+    implementation "org.jetbrains.anko:anko:0.10.4"
     //androidx版本  Tablayout依赖 :
     implementation 'com.android.support:design:29.0.0'
     //SmartRefresh 上下拉刷新框架
@@ -87,4 +89,7 @@ dependencies {
     implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 
 
+    //cardview
+    compile 'com.android.support:cardview-v7:23.2.0'
+    implementation 'com.zyp.cardview:cardview:1.0.1'
 }

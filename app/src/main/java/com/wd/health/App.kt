@@ -3,6 +3,7 @@ package com.wd.health
 import android.app.Application
 import android.content.Context
 import com.bw.doctor.base.api.Api
+import org.greenrobot.eventbus.EventBus
 
 /**
  * 时间 :2020/5/21  16:15
@@ -12,6 +13,14 @@ import com.bw.doctor.base.api.Api
 class App:Application() {
     companion object{
         var context: Context?=null
+    }
+    //以后就可以直接在任意的类里面使用WdTools.getContext()获取Context对象了。
+    companion object {
+        var context:Application? = null
+        fun getContext():Context{
+            return context!!
+        }
+
     }
     override fun onCreate() {
         super.onCreate()
