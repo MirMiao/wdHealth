@@ -1,17 +1,20 @@
 package com.wd.health.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.LogPrinter
 import android.widget.RadioGroup
 import androidx.viewpager.widget.ViewPager
 import com.wd.health.R
 import com.wd.health.adapter.FragmentAdapter
+import com.wd.health.base.BaseActivity
+import com.wd.health.base.mvp.BasePresenter
+import com.wd.health.contract.LoginContract
+import com.wd.health.entity.LoginEntity
+import com.wd.health.presenter.LogPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity :AppCompatActivity(){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<LogPresenter>(),LoginContract.IView{
+    override fun initListener(savedInstanceState: Bundle?) {
 
         val fragmentAdapter:FragmentAdapter=FragmentAdapter(supportFragmentManager)
         viewPager.adapter=fragmentAdapter
@@ -38,6 +41,31 @@ class MainActivity :AppCompatActivity(){
             }
 
         })
+
+
     }
 
+    override fun layoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun onLoadPresenter(): LogPresenter {
+        return LogPresenter(this)
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun seccess(loginEntity: LoginEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun failur(throwable: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 }
+
+

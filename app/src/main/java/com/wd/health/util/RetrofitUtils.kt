@@ -1,15 +1,18 @@
 package com.bw.doctor.base.utils
 
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.bw.doctor.base.api.Api
 import com.bw.doctor.base.api.ApiService
+import com.wd.health.App
+import com.wd.health.R
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-
-
 /**
  * @ClassName: RrrtrofitUtils
  * @Description: Java类的作用
@@ -40,6 +43,14 @@ class RetrofitUtils private constructor(){
         //可用于多种不同种类的请求
         fun createService(): ApiService {
             return getService(Api.BASE_URL, ApiService::class.java)
+        }
+
+        //圆形头像
+        fun getRoundphoto(path:String,imageView: ImageView){
+            Glide.with(App.context!!).load(path).error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.ic_launcher)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .into(imageView)
         }
 
     }

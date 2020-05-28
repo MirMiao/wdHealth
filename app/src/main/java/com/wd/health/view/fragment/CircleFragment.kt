@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 class CircleFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val textview:TextView= TextView(context)
-        textview.setText("编辑")
+        textview.setText("病友圈")
         return  textview
     }
 }

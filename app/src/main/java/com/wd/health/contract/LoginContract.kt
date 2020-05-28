@@ -2,6 +2,7 @@ package com.wd.health.contract
 
 import com.wd.health.base.mvp.IBaseModel
 import com.wd.health.base.mvp.IBaseView
+import com.wd.health.entity.BannerEntity
 import com.wd.health.entity.EmailCodeEntity
 import com.wd.health.entity.LoginEntity
 import java.util.*
@@ -18,13 +19,18 @@ interface LoginContract {
             fun seccess(loginEntity: LoginEntity)
             fun failur(throwable: Throwable)
         }
+
     }
 
     interface IView:IBaseView{
         fun seccess(loginEntity: LoginEntity)
         fun failur(throwable: Throwable)
+
     }
     interface IPresenter{
         fun login(email:String,pwd:String)
     }
+
+
+
 }
