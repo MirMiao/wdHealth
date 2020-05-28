@@ -38,7 +38,7 @@ interface ApiService {
     //查看用户档案
     @GET(Api.FIND_USER_ARCHIVES)
     fun findUserArchives(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserArchiverEntity>
-    //--------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------
 
      //查询用户当天是否签到
     @GET(Api.FIND_USER_SIGN_TODAY)
