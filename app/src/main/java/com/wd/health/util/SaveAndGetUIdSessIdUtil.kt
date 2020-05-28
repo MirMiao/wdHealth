@@ -9,22 +9,26 @@ import com.wd.health.App
  */
 class SaveAndGetUIdSessIdUtil {
     val sp = App.getContext().getSharedPreferences("userInfo", 0)
-    //存放userId
-     fun savaUserId(userId:Int){
-         sp.edit().putInt("userId",userId).commit()
+    //存放int类型的值
+     fun savaInt(name:String,value:Int){
+         sp.edit().putInt(name,value).commit()
      }
-    //存放sessionId
-    fun savaSessionId(sessionId:String){
-        sp.edit().putString("sessionId",sessionId).commit()
+    //存放String类型的值
+    fun savaString(name: String,value:String){
+        sp.edit().putString(name,value).commit()
     }
-    //取出userId
-    fun getUserId():Int{
-        val userId = sp.getInt("userId", 0)
+    //根据名字取出int值
+    fun getInt(name:String):Int{
+        val userId = sp.getInt(name, 0)
         return userId
     }
-    //取出sessionId
-    fun getSessionId():String{
-        val sessionId = sp.getString("sessionId", "")
+    //根据名字取出int值
+    fun getString(name: String):String{
+        val sessionId = sp.getString(name, "")
         return sessionId!!
+    }
+    //清除数据
+    fun clear(){
+        sp.edit().clear().commit()
     }
 }

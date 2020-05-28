@@ -47,7 +47,7 @@ android:background="#ffffff"
             android:layout_height="@dimen/dp_50"/>
         <TextView
             android:layout_width="wrap_content"
-
+            android:id="@+id/tv_userName"
             android:text="欧若拉"
             android:textColor="#ffffff"
             android:layout_marginLeft="@dimen/dp_20"

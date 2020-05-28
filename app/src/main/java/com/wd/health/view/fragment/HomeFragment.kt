@@ -2,6 +2,7 @@ package com.wd.health.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,8 @@ import com.wd.health.entity.BannerEntity
 import com.wd.health.entity.KeShiEntity
 import com.wd.health.entity.ZiXunEntity
 import com.wd.health.presenter.BannerPresenter
-import com.wd.health.view.activity.BingZhengActivity
-import com.wd.health.view.activity.SousuoActivity
-import com.wd.health.view.activity.YaoPinActivity
-import com.wd.health.view.activity.ZiXunActivity
+import com.wd.health.util.SaveAndGetUIdSessIdUtil
+import com.wd.health.view.activity.*
 import com.wd.health.weight.BannerImageHolderView
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -53,7 +52,23 @@ class HomeFragment: BaseFragment<BannerPresenter>(),BannerContact.BannerV{
 
         var home_banne:ConvenientBanner<Int>
 
+          home_toux.setOnClickListener(object:View.OnClickListener{
+              override fun onClick(p0: View?) {
+                 //判断用户是否登陆
+                  var saveAndGetUIdSessIdUtil:SaveAndGetUIdSessIdUtil= SaveAndGetUIdSessIdUtil()
+                  val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+                  if(sessionId.length==0){
+                       //就跳转到//登陆
+                     var intent=Intent(context,LoginActivity::class.java)
+                        startActivity(intent)
+                  }else{
+                      //跳转到用户列表页面
+                      var intent=Intent(context,UserHomeActivity::class.java)
+                      startActivity(intent)
+                  }
+              }
 
+          })
     }
 
     override fun initData() {

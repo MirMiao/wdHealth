@@ -7,6 +7,10 @@ import android.view.View
 import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.wd.health.R
 import com.wd.health.adapter.UserListAdapter
 import com.wd.health.base.BaseActivity
@@ -15,6 +19,7 @@ import com.wd.health.entity.userentity.FindUserNoticeReadNumEntity
 import com.wd.health.entity.userentity.FindUserSignToadyEntity
 import com.wd.health.entity.userentity.UserAddSignEntity
 import com.wd.health.presenter.userpresenter.UserHomePresenter
+import com.wd.health.util.SaveAndGetUIdSessIdUtil
 import com.wd.health.view.activity.userActivity.*
 import kotlinx.android.synthetic.main.activity_userhome.*
 import org.greenrobot.eventbus.EventBus
@@ -59,7 +64,17 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
     }
 
     override fun initData() {
-       mPresenter.findUserSignToday(244,"1590646868895244")
+        val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+        val id = saveAndGetUIdSessIdUtil.getInt("id")
+        val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+        val headPic = saveAndGetUIdSessIdUtil.getString("headPic")
+        val nickName = saveAndGetUIdSessIdUtil.getString("nickName")
+        // .apply(RequestOptions.bitmapTransform(new RoundedCorners(15)))
+         Glide.with(this).load(headPic)
+             .apply(RequestOptions.bitmapTransform(RoundedCorners(50)))
+             .into(iv_headPic)
+         tv_userName.setText(nickName)
+        mPresenter.findUserSignToday(id,sessionId)
 
     }
 
@@ -76,7 +91,10 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
               //进行签到
               bt_sign.setOnClickListener(object:View.OnClickListener{
                   override fun onClick(p0: View?) {
-                      mPresenter.addUserSign(244,"1590646868895244")
+                      val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+                      val id = saveAndGetUIdSessIdUtil.getInt("id")
+                      val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+                      mPresenter.addUserSign(id,sessionId)
                   }
 
               })
@@ -91,7 +109,10 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
     override fun addUserSignSeccess(userAddSignEntity: UserAddSignEntity) {
           if("0000".equals(userAddSignEntity.status)){
               //请求一次数据
-              mPresenter.findUserSignToday(244,"1590646868895244")
+              val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+              val id = saveAndGetUIdSessIdUtil.getInt("id")
+              val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+              mPresenter.findUserSignToday(id,sessionId)
           }
     }
 
