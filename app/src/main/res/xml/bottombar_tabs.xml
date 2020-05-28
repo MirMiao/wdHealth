@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <tab
+        id="@+id/tab_home"
+        icon="@mipmap/common_tab_home_n"
+        title="首页" />
+    <tab
+        id="@+id/tab_quan"
+        icon="@mipmap/common_tab_circle_n"
+        title="病友圈" />
+    <tab
+        id="@+id/tab_pin"
+        icon="@mipmap/common_tab_video_n"
+        title="视频" />
+
+
+</PreferenceScreen>
