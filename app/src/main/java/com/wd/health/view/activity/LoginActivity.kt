@@ -64,6 +64,12 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
                startActivity<RegisterActivity>()
             }
         })
+        tv_forgetPwd.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(p0: View?) {
+
+            }
+
+        })
     }
     override fun initData() {
     }

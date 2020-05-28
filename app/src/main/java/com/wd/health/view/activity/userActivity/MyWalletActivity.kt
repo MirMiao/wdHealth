@@ -44,7 +44,7 @@ class MyWalletActivity : BaseActivity<WalletPresenter>(), WalletContract.IView {
                 mPresenter.findUserConsummtion(userId,sessionId,1,5)
             }*/
             mPresenter.findUserWallet(244,"1590407578236244")
-            mPresenter.findUserConsummtion(244,"1590407578236244",1,5)
+            mPresenter.findUserConsummtion(244,"1590407578236244",1,100)
         }
 
         override fun layoutId(): Int {

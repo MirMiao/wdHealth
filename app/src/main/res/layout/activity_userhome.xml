@@ -58,6 +58,7 @@ android:background="#ffffff"
         <Button
             android:layout_width="@dimen/dp_58"
             android:text="签到"
+            android:id="@+id/bt_sign"
             android:textSize="@dimen/sp_14"
             android:textColor="#3087ea"
             android:layout_centerVertical="true"

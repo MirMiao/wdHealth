@@ -109,5 +109,5 @@
          android:id="@+id/rv_wallet"
          android:layout_marginRight="@dimen/dp_20"
          android:layout_marginTop="@dimen/dp_20"
-         android:layout_height="match_parent"/>
+         android:layout_height="wrap_content"/>
 </RelativeLayout>
