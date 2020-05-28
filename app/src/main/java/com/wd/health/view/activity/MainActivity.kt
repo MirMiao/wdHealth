@@ -1,22 +1,19 @@
 package com.wd.health.view.activity
 
 import android.os.Bundle
-import android.util.Log
+import android.util.LogPrinter
 import android.widget.RadioGroup
 import androidx.viewpager.widget.ViewPager
 import com.wd.health.R
 import com.wd.health.adapter.FragmentAdapter
 import com.wd.health.base.BaseActivity
-import com.wd.health.contract.IContract
-import com.wd.health.entity.AEntity
-import com.wd.health.presenter.BannerPresenter
-import com.wd.health.presenter.Presenter
+import com.wd.health.base.mvp.BasePresenter
+import com.wd.health.contract.LoginContract
+import com.wd.health.entity.LoginEntity
+import com.wd.health.presenter.LogPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<Presenter>(),IContract.IView {
-    override fun onLoadPresenter(): Presenter {
-        return Presenter(this)
-    }
+class MainActivity : BaseActivity<LogPresenter>(),LoginContract.IView{
     override fun initListener(savedInstanceState: Bundle?) {
 
         val fragmentAdapter:FragmentAdapter=FragmentAdapter(supportFragmentManager)
@@ -47,20 +44,25 @@ class MainActivity : BaseActivity<Presenter>(),IContract.IView {
 
 
     }
-    override fun initData() {
-        mPresenter.getA()
-    }
 
     override fun layoutId(): Int {
         return R.layout.activity_main
     }
 
-    override fun seccess(o: AEntity) {
-        Log.d("xxx","成功")
+    override fun onLoadPresenter(): LogPresenter {
+        return LogPresenter(this)
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun seccess(loginEntity: LoginEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun failur(throwable: Throwable) {
-
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

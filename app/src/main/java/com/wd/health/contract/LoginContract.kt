@@ -2,7 +2,6 @@ package com.wd.health.contract
 
 import com.wd.health.base.mvp.IBaseModel
 import com.wd.health.base.mvp.IBaseView
-import com.wd.health.entity.AEntity
 import com.wd.health.entity.BannerEntity
 import com.wd.health.entity.EmailCodeEntity
 import com.wd.health.entity.LoginEntity
@@ -16,8 +15,6 @@ import java.util.*
 interface LoginContract {
     interface IModel:IBaseModel{
         fun login(email:String,pwd:String,modelCallBack: ModelCallBack)
-
-        fun getA(modelCallBack: ModelCallBack)
         interface ModelCallBack{
             fun seccess(loginEntity: LoginEntity)
             fun failur(throwable: Throwable)
@@ -31,9 +28,6 @@ interface LoginContract {
 
     }
     interface IPresenter{
-        fun getA()
-
-
         fun login(email:String,pwd:String)
     }
 

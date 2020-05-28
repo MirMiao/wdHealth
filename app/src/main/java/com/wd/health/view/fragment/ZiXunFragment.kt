@@ -1,5 +1,6 @@
 package com.wd.health.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.wd.health.adapter.ZiXunRecyAdapter
 import com.wd.health.contract.ZiXunListContacr
 import com.wd.health.entity.ZiXunListEntity
 import com.wd.health.presenter.ZiXunListPresenter
+import com.wd.health.view.activity.ZiXunActivity
 import kotlinx.android.synthetic.main.fragment_zixun.*
 
 //首页咨询fragment
@@ -36,6 +38,19 @@ class ZiXunFragment:BaseFragment<ZiXunListPresenter>(),ZiXunListContacr.ZiXunLis
 
     override fun initListener(savedInstanceState: Bundle?) {
         recy_zixun.layoutManager=LinearLayoutManager(context)
+
+        home_quzixun.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                val arguments = arguments
+                val int = arguments?.getInt("foo")
+                var intent=Intent(context,ZiXunActivity::class.java)
+                var bundle=Bundle()
+                bundle.putInt("f",int!!)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+        })
+
     }
 
     override fun initData() {

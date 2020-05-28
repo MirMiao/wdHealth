@@ -43,7 +43,6 @@ class HomeFragment: BaseFragment<BannerPresenter>(),BannerContact.BannerV{
         home_sousuo.setOnClickListener({startActivity(Intent(context,SousuoActivity::class.java))})
         home_bing.setOnClickListener ({startActivity(Intent(context,BingZhengActivity::class.java))})
         home_yao.setOnClickListener({startActivity(Intent(context,YaoPinActivity::class.java))})
-        home_quzixun.setOnClickListener({startActivity(Intent(context,ZiXunActivity::class.java))})
 
         home_recy_wenzhen.layoutManager=GridLayoutManager(context,4)
 

@@ -11,6 +11,8 @@ object Api {
     const val ZIXUN="health/share/information/v1/findInformationPlateList"
     //健康咨询列表
     const val ZIXUN_LIST="health/share/information/v1/findInformationList"
+    //健康咨询详情
+    const val ZIXUN_XIANGQING="health/share/information/v1/findInformation"
     //根据科室查询对应病症
     const val BINGZHENG="health/share/knowledgeBase/v1/findDiseaseCategory"
     //查询常见病症详情
@@ -24,7 +26,6 @@ object Api {
     const val YAOPIN_XIANGQING="health/share/knowledgeBase/v1/findDrugsKnowledge"
 
 
-    const val BASE_URL:String = "http://mobile.bwstudent.com/" //base
     const val GET_EMAIL_CODE:String="health/user/v1/sendOutEmailCode" //获取邮箱验证码
     const val LOGIN:String="health/user/v1/login" //登陆
     const val REGISTER:String="health/user/v1/register" //注册

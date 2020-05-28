@@ -49,6 +49,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
     //anko哭
     implementation "org.jetbrains.anko:anko:0.10.4"
     //androidx版本  Tablayout依赖 :
@@ -76,20 +78,15 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     //recycelrview，列表控件，和listview差不多，升级版
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    /*//XBanner
-    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.2'*/
 
     implementation 'com.bigkoo:convenientbanner:2.0.5'
 
     implementation 'com.cjj.materialrefeshlayout:library:1.3.0'
-    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
     implementation 'com.roughike:bottom-bar:2.3.1'
-    implementation "org.jetbrains.anko:anko:0.10.1"
 
     implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 
-
     //cardview
-    compile 'com.android.support:cardview-v7:23.2.0'
+    implementation 'com.android.support:cardview-v7:23.2.0'
     implementation 'com.zyp.cardview:cardview:1.0.1'
 }

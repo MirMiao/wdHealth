@@ -6,9 +6,7 @@ import com.wd.health.entity.RegEntity
 import com.wd.health.entity.userentity.FindUserConsumption
 import com.wd.health.entity.userentity.FindUserWalletEntity
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * @ClassName: ApiService
@@ -17,9 +15,6 @@ import retrofit2.http.Query
  * @CreateDate: 2020/5/19 19:33
  */
 interface ApiService {
-   @GET("health/user/video/v1/findVideoCategoryList")
-   fun getA(): Observable<AEntity>
-
    //首页轮播图
    @GET(Api.BANNER_SHOW)
    fun getBanner():Observable<BannerEntity>
@@ -32,6 +27,9 @@ interface ApiService {
    //健康咨询列表
    @GET(Api.ZIXUN_LIST)
    fun getZiXunList(@Query("plateId") plateId:Int, @Query("page") page:Int, @Query("count") count:Int):Observable<ZiXunListEntity>
+    //健康咨询详情
+    @GET(Api.ZIXUN_XIANGQING)
+    fun getZiXunXiagQing(@Query("infoId") infoId:Int):Observable<ZiXunXiangQingEntity>
    //根据科室查询对应病症
    @GET(Api.BINGZHENG)
    fun getBingZheng(@Query("departmentId") departmentId:Int):Observable<BingZhengEntity>
@@ -48,19 +46,6 @@ interface ApiService {
    //查询常见药品详情
    @GET(Api.YAOPIN_XIANGQING)
    fun getYaoPinXiangQing(@Query("id") id:Int):Observable<YaoPinXiangQingEntity>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
    //获取邮箱验证码

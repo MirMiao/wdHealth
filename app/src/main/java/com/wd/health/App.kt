@@ -11,9 +11,6 @@ import org.greenrobot.eventbus.EventBus
  * 功能 :
  */
 class App:Application() {
-    companion object{
-        var context: Context?=null
-    }
     //以后就可以直接在任意的类里面使用WdTools.getContext()获取Context对象了。
     companion object {
         var context:Application? = null

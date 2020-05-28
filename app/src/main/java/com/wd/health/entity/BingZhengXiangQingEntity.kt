@@ -13,5 +13,6 @@ data class BingZhengXiangQingResult(
     val id: Int,
     val pathology: String,
     val symptom: String,
+    val chineseMedicineTreatment:String,
     val westernMedicineTreatment: String
 )
