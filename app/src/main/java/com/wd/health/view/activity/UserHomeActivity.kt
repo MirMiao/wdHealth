@@ -60,7 +60,16 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
         rv_userList.overScrollMode=View.OVER_SCROLL_NEVER  //去除阴影
         rv_userList.adapter=UserListAdapter(titleList,imageList,this)
 
+        //进行签到
+        bt_sign.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+                val id = saveAndGetUIdSessIdUtil.getInt("id")
+                val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+                mPresenter.addUserSign(id,sessionId)
+            }
 
+        })
     }
 
     override fun initData() {
@@ -88,16 +97,6 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
                 bt_sign.setText("已签到")
                 bt_sign.isEnabled=false
           }else if(findUserSignToadyEntity.result==2){
-              //进行签到
-              bt_sign.setOnClickListener(object:View.OnClickListener{
-                  override fun onClick(p0: View?) {
-                      val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
-                      val id = saveAndGetUIdSessIdUtil.getInt("id")
-                      val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
-                      mPresenter.addUserSign(id,sessionId)
-                  }
-
-              })
 
           }
     }
@@ -107,6 +106,7 @@ class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
     }
 
     override fun addUserSignSeccess(userAddSignEntity: UserAddSignEntity) {
+        myToast(userAddSignEntity.message)
           if("0000".equals(userAddSignEntity.status)){
               //请求一次数据
               val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()

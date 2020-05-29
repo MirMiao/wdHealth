@@ -40,9 +40,12 @@ object Api {
 
 
     const val FIND_USER_SIGN_TODAY:String="health/user/verify/v1/whetherSignToday" //查询用户当天是否签到
-    const val ADD_USER_SIGN:String="health/user/verify/v1/whetherSignToday" //用户签到
+    const val ADD_USER_SIGN:String="health/user/verify/v1/addSign" //用户签到
     const val FIND_USER_SYSTEMNOTICE_LIST:String="health/user/verify/v1/whetherSignToday" //查询用户的系统通知
     const val FIND_USER_NOTICE_READ_NUM:String="health/user/verify/v1/findUserNoticeReadNum" //查询用户的未读消息
+
+
+    const val UPDATE_USER_PWD:String="health/user/verify/v1/updateUserPwd" //修改用户密码
 
 
 

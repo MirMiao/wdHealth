@@ -47,6 +47,7 @@
             android:layout_marginLeft="@dimen/dp_20"
             android:textColor="#333333"
             android:text="欧若拉"
+            android:id="@id/tv_userName"
             android:layout_height="wrap_content"/>
         <ImageView
             android:layout_width="@dimen/dp_24"

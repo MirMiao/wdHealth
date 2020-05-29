@@ -2,6 +2,7 @@ package com.wd.health
 
 import android.app.Application
 import android.content.Context
+import androidx.multidex.MultiDex
 import com.bw.doctor.base.api.Api
 import org.greenrobot.eventbus.EventBus
 
@@ -22,5 +23,7 @@ class App:Application() {
     override fun onCreate() {
         super.onCreate()
         context=this
+        // 主要是添加下面这句代码
+        MultiDex.install(this);
     }
 }

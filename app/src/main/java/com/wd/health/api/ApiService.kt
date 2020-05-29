@@ -80,11 +80,19 @@ interface ApiService {
     fun findUserSignToday(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserSignToadyEntity>
 
     //用户签到
-    @GET(Api.ADD_USER_SIGN)
+
+    @POST(Api.ADD_USER_SIGN)
     fun addUserSign(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<UserAddSignEntity>
 
     //查询未读消息
     @GET(Api.FIND_USER_NOTICE_READ_NUM)
     fun findUserNoticeReadNum(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserNoticeReadNumEntity>
+
+   //修改用户密码
+    @FormUrlEncoded
+    @PUT(Api.UPDATE_USER_PWD)
+    fun  updateUserPwd(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                       @Field("oldPwd") oldPwd:String, @Field("newPwd") newPwd:String):Observable<UpdatePwdEntity>
+
 
 }
