@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp_20"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+  <TextView
+      android:layout_width="wrap_content"
+      android:text="我的抗癌路程"
+      android:id="@+id/tv_name"
+      android:textSize="@dimen/sp_16"
+      android:textColor="#333333"
+      android:layout_height="wrap_content"/>
+     <TextView
+         android:layout_width="wrap_content"
+         android:id="@+id/tv_sickInfo"
+         android:text="圣诞节三啥卡打开了加快来得及卡萨丁就拉萨空间大是理科啥枯鲁杜鹃萨克雷家史莱克大街上的来看"
+         android:textSize="@dimen/sp_12"
+         android:textColor="#333333"
+         android:layout_marginTop="@dimen/dp_14"
+         android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="收藏 3"
+            android:textSize="@dimen/sp_10"
+            android:id="@+id/tv_collectNum"
+            android:textColor="#333333"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/sp_10"
+            android:textColor="#333333"
+            android:id="@+id/tv_adviceNum"
+            android:text="建议 109"
+            android:layout_marginLeft="@dimen/dp_14"
+            android:layout_toRightOf="@id/tv_collectNum"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="两分钟钱"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/sp_10"
+            android:textColor="#333333"
+            android:id="@+id/tv_time"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/view5_shape"
+        android:layout_height="@dimen/dp_1"/>
+</LinearLayout>

@@ -94,5 +94,14 @@ interface ApiService {
     fun  updateUserPwd(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
                        @Field("oldPwd") oldPwd:String, @Field("newPwd") newPwd:String):Observable<UpdatePwdEntity>
 
+    //查询用户资讯收藏列表
+    @GET(Api.FIND_USERINFO_COLLECTION)
+    fun findUserInfoCollection(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                               @Query("page") page: Int ,   @Query("count") count: Int):Observable<FindUserInfoCollectionEntity>
+        //查询用户病友圈收藏列表
+    @GET(Api.FIND_USER_SICK_COLLECTION)
+    fun findUserSickClooection(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                               @Query("page") page: Int ,   @Query("count") count: Int):Observable<FindUserSickCollectionEntity>
+
 
 }

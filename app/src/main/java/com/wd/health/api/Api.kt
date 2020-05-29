@@ -47,6 +47,9 @@ object Api {
 
     const val UPDATE_USER_PWD:String="health/user/verify/v1/updateUserPwd" //修改用户密码
 
+    const val FIND_USERINFO_COLLECTION:String="health/user/verify/v1/findUserInfoCollectionList" //查询用户资讯收藏列表
+    const val FIND_USER_SICK_COLLECTION:String="health/user/verify/v1/findUserSickCollectionList" //查询用户病友圈收藏列表
+
 
 
 }
