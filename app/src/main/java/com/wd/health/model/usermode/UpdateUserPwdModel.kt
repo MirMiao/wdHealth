@@ -20,6 +20,7 @@ class UpdateUserPwdModel:UpdatePwdContract.IModel {
         updateUserPwdModelCallBack: UpdatePwdContract.IModel.updateUserPwdModelCallBack
     ) {
         RetrofitUtils.createService().updateUserPwd(userId,sessionId,oldPwd,newPwd)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 t: UpdatePwdEntity ->

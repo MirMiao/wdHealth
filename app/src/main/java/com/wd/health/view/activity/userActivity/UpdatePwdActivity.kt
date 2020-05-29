@@ -69,7 +69,6 @@ class UpdatePwdActivity:BaseActivity<UpdateUserPwdPresenter>(),UpdatePwdContract
     }
 
     override fun seccess(updatePwdEntity: UpdatePwdEntity) {
-          myToast("成功了没有啊")
           myToast(updatePwdEntity.message)
         if("0000".equals(updatePwdEntity.status)){
             val saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
@@ -79,7 +78,6 @@ class UpdatePwdActivity:BaseActivity<UpdateUserPwdPresenter>(),UpdatePwdContract
     }
 
     override fun failur(throwable: Throwable) {
-        myToast("失败了")
-        //myToast("${throwable.message}")
+
     }
 }
