@@ -103,5 +103,13 @@ interface ApiService {
     fun findUserSickClooection(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
                                @Query("page") page: Int ,   @Query("count") count: Int):Observable<FindUserSickCollectionEntity>
 
+   //校验验证码
+    @FormUrlEncoded
+    @POST(Api.CHECK_CODE)
+    fun checkCode(@Field("email") email: String,@Field("code") code: String):Observable<CheckCodeEntity>
 
+    //重置密码
+    @FormUrlEncoded
+    @PUT(Api.RESETTING_PWD)
+    fun resettingPwd(@Field("email") email: String,@Field("pwd1") pwd1: String,@Field("pwd2") pwd2: String):Observable<ResettingPwdEntity>
 }

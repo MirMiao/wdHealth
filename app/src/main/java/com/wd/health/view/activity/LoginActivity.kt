@@ -29,6 +29,7 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
     }
 
     override fun initListener(savedInstanceState: Bundle?) {
+
         iv_pwd.setOnClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
                 if(iv_pwd.isChecked){
@@ -67,9 +68,9 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
         })
         tv_forgetPwd.setOnClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
+                        startActivity<ForgetPwdActivity>()
 
             }
-
         })
     }
     override fun initData() {
