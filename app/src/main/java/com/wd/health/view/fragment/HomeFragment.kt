@@ -51,8 +51,6 @@ class HomeFragment: BaseFragment<BannerPresenter>(),BannerContact.BannerV{
         zixun_viewPager.adapter=mypagerAdapter
         zixun_tab.setupWithViewPager(zixun_viewPager)
 
-        var home_banne:ConvenientBanner<Int>
-
 
     }
 

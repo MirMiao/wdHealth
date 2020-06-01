@@ -47,6 +47,13 @@ interface ApiService {
    @GET(Api.YAOPIN_XIANGQING)
    fun getYaoPinXiangQing(@Query("id") id:Int):Observable<YaoPinXiangQingEntity>
 
+    //查询问诊医生列表
+    @GET(Api.WENZHEN_YISHEN)
+    fun getWenZhenYiSheng(@Query("deptId") deptId:Int,@Query("condition") condition:Int,@Query("sortBy") sortBy:Int,@Query("page") page:Int,@Query("count") count:Int):Observable<WenZhenYiShengEntity>
+    //问诊医生详情
+    @GET(Api.WENZHEN_YISHENGXIANGQING)
+    fun getWenZhenYiShengXiangQing(@Query("doctorId") doctorId:Int):Observable<WenZhenYiShengXiangQingEntity>
+
 
    //获取邮箱验证码
    @FormUrlEncoded

@@ -25,6 +25,11 @@ object Api {
     //查询常见药品详情
     const val YAOPIN_XIANGQING="health/share/knowledgeBase/v1/findDrugsKnowledge"
 
+    //查询问诊医生列表
+    const val WENZHEN_YISHEN="health/user/inquiry/v1/findDoctorList"
+    //问诊医生详情
+    const val WENZHEN_YISHENGXIANGQING="health/user/inquiry/v1/findDoctorInfo"
+
 
     const val GET_EMAIL_CODE:String="health/user/v1/sendOutEmailCode" //获取邮箱验证码
     const val LOGIN:String="health/user/v1/login" //登陆

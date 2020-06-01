@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.ZiXunXiangQingActivity"></activity>
+        <activity android:name=".view.activity.WenZhenActivity"></activity>
+        <activity android:name=".view.activity.ZiXunXiangQingActivity" />
         <activity android:name=".view.activity.YaoPinXiangQingActivity" />
         <activity android:name=".view.activity.BingZhengXiangQingActivity" />
         <activity android:name=".view.activity.ZiXunActivity" />
@@ -31,7 +32,8 @@
         <activity
             android:name=".view.activity.StartActivity"
             android:theme="@style/AppTheme.FullScreen" />
-        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.LoginActivity" >
+        </activity>
         <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".view.activity.userActivity.MyFilesActivity" />
         <activity android:name=".view.activity.userActivity.MyWalletActivity" />
