@@ -37,5 +37,31 @@ object Api {
     const val Find_USER_WALLET:String="health/user/verify/v1/findUserWallet" //查找用户钱包
     const val FIND_USER_CONSUMPTION:String="health/user/verify/v1/findUserConsumptionRecordList" //查找用户消费记录
 
+    const val ADD_USER_ARCHIVES:String="health/user/verify/v1/addUserArchives" //添加用户档案
+    const val FIND_USER_ARCHIVES:String="health/user/verify/v1/findUserArchives" //查找用户档案
+    const val UPDATE_USER_CONSUMPTION:String="health/user/verify/v1/updateUserArchives" //编辑用户档案
+    const val DELETE_USER_CONSUMPTION:String="health/user/verify/v1/findUserConsumptionRecordList" //删除用户档案
+
+
+
+    const val FIND_USER_SIGN_TODAY:String="health/user/verify/v1/whetherSignToday" //查询用户当天是否签到
+    const val ADD_USER_SIGN:String="health/user/verify/v1/addSign" //用户签到
+    const val FIND_USER_SYSTEMNOTICE_LIST:String="health/user/verify/v1/whetherSignToday" //查询用户的系统通知
+    const val FIND_USER_NOTICE_READ_NUM:String="health/user/verify/v1/findUserNoticeReadNum" //查询用户的未读消息
+
+
+    const val UPDATE_USER_PWD:String="health/user/verify/v1/updateUserPwd" //修改用户密码
+
+    const val FIND_USERINFO_COLLECTION:String="health/user/verify/v1/findUserInfoCollectionList" //查询用户资讯收藏列表
+    const val FIND_USER_SICK_COLLECTION:String="health/user/verify/v1/findUserSickCollectionList" //查询用户病友圈收藏列表
+
+
+
+    const val CHECK_CODE:String="health/user/v1/checkCode" //校验验证码
+    const val RESETTING_PWD:String="health/user/v1/resetUserPwd" //重置密码
+
+
+
+
 
 }

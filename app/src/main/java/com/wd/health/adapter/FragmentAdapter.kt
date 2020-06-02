@@ -12,7 +12,7 @@ import com.wd.health.view.fragment.VideoFragment
  * 作者 :苗恒
  * 功能 :
  */
-class FragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+open class FragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     var fragmentList=ArrayList<Fragment>()
     init {
         val homeFragment= HomeFragment()

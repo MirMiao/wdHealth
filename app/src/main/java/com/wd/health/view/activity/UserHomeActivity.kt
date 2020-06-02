@@ -7,8 +7,19 @@ import android.view.View
 import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.wd.health.R
 import com.wd.health.adapter.UserListAdapter
+import com.wd.health.base.BaseActivity
+import com.wd.health.contract.usercontract.UserHomeContract
+import com.wd.health.entity.userentity.FindUserNoticeReadNumEntity
+import com.wd.health.entity.userentity.FindUserSignToadyEntity
+import com.wd.health.entity.userentity.UserAddSignEntity
+import com.wd.health.presenter.userpresenter.UserHomePresenter
+import com.wd.health.util.SaveAndGetUIdSessIdUtil
 import com.wd.health.view.activity.userActivity.*
 import kotlinx.android.synthetic.main.activity_userhome.*
 import org.greenrobot.eventbus.EventBus
@@ -23,13 +34,15 @@ import kotlin.concurrent.thread
  * 作者 :苗恒
  * 功能 :
  */
-class UserHomeActivity:AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_userhome)
+class UserHomeActivity:BaseActivity<UserHomePresenter>(),UserHomeContract.IView{
+    override fun onLoadPresenter(): UserHomePresenter {
+        return UserHomePresenter(this)
+    }
+
+    override fun initListener(savedInstanceState: Bundle?) {
         EventBus.getDefault().register(this)
         val titleList = listOf<String>("我的档案", "我的钱包", "我的收藏","被采纳建议","我的视频"
-         ,"我的病友圈","我的关注","我的任务","设置管理")
+            ,"我的病友圈","我的关注","我的任务","设置管理")
         val resources = resources;
         val file = BitmapFactory.decodeResource(resources, R.mipmap.my_icon_file_n);//我的档案
         val wallet = BitmapFactory.decodeResource(resources, R.mipmap.my_icon_wallet_n);//我的钱包
@@ -45,22 +58,92 @@ class UserHomeActivity:AppCompatActivity() {
 
         rv_userList.layoutManager=gridLayoutManager
         rv_userList.overScrollMode=View.OVER_SCROLL_NEVER  //去除阴影
-
         rv_userList.adapter=UserListAdapter(titleList,imageList,this)
+
+        //进行签到
+        bt_sign.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+                val id = saveAndGetUIdSessIdUtil.getInt("id")
+                val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+                mPresenter.addUserSign(id,sessionId)
+            }
+
+        })
     }
+
+    override fun initData() {
+        val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+        val id = saveAndGetUIdSessIdUtil.getInt("id")
+        val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+        val headPic = saveAndGetUIdSessIdUtil.getString("headPic")
+        val nickName = saveAndGetUIdSessIdUtil.getString("nickName")
+        // .apply(RequestOptions.bitmapTransform(new RoundedCorners(15)))
+         Glide.with(this).load(headPic)
+             .apply(RequestOptions.bitmapTransform(RoundedCorners(50)))
+             .into(iv_headPic)
+         tv_userName.setText(nickName)
+        mPresenter.findUserSignToday(id,sessionId)
+
+    }
+
+    override fun layoutId(): Int {
+        return R.layout.activity_userhome
+    }
+
+    override fun findUserSignTodaySeccess(findUserSignToadyEntity: FindUserSignToadyEntity) {
+          if(findUserSignToadyEntity.result==1){
+                //说明已经签到过了，就设置为灰色不可用
+                bt_sign.setText("已签到")
+                bt_sign.isEnabled=false
+          }else if(findUserSignToadyEntity.result==2){
+
+          }
+    }
+
+    override fun findUserSignTodayFailur(throwable: Throwable) {
+
+    }
+
+    override fun addUserSignSeccess(userAddSignEntity: UserAddSignEntity) {
+        myToast(userAddSignEntity.message)
+          if("0000".equals(userAddSignEntity.status)){
+              //请求一次数据
+              val  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+              val id = saveAndGetUIdSessIdUtil.getInt("id")
+              val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+              mPresenter.findUserSignToday(id,sessionId)
+          }
+    }
+
+    override fun addUserSignFailur(throwable: Throwable) {
+
+    }
+
+    override fun findUserNoticeReadNumSeccess(findUserNoticeReadNumEntity: FindUserNoticeReadNumEntity) {
+
+    }
+
+    override fun findUserNoticeReadNumFailur(throwable: Throwable) {
+
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun a(position:String){
-        val toInt = position.toInt()
-        when(toInt){
-            0-> startActivity<MyFilesActivity>()
-            1-> startActivity<MyWalletActivity>()
-            2-> startActivity<MyCollectActivity>()
-            3-> startActivity<MyAdviceActivity>()
-            4-> startActivity<MyVideoActivity>()
-            5-> startActivity<MyFallFriendActivity>()
-            6-> startActivity<MyConcernActivity>()
-            7-> startActivity<MyTaskActivity>()
-            8-> startActivity<MySettingActivity>()
-        }
-    }
+      fun a(position:String){
+          val toInt = position.toInt()
+          when(toInt){
+              0-> startActivity<MyFilesActivity>()
+              1-> startActivity<MyWalletActivity>()
+              2-> startActivity<MyCollectActivity>()
+              3-> startActivity<MyAdviceActivity>()
+              4-> startActivity<MyVideoActivity>()
+              5-> startActivity<MyFallFriendActivity>()
+              6-> startActivity<MyConcernActivity>()
+              7-> startActivity<MyTaskActivity>()
+              8-> startActivity<MySettingActivity>()
+          }
+      }
 }
+
+
+

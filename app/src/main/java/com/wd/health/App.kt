@@ -23,8 +23,8 @@ class App:Application() {
     override fun onCreate() {
         super.onCreate()
         context=this
-
-        MultiDex.install(this)
+        // 主要是添加下面这句代码
+        MultiDex.install(this);
 
     }
 }

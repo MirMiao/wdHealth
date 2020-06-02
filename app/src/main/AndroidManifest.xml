@@ -21,6 +21,9 @@
         <activity android:name=".view.activity.YaoPinActivity" />
         <activity android:name=".view.activity.BingZhengActivity" />
         <activity android:name=".view.activity.SousuoActivity" />
+        <activity android:name=".view.activity.userActivity.UpdatePwdActivity"/>
+        <activity android:name=".view.activity.ForgetPwdActivity"/>
+        <activity android:name=".view.activity.ResettingPwdActivity"/>
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

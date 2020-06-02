@@ -33,18 +33,11 @@ class MyWalletActivity : BaseActivity<WalletPresenter>(), WalletContract.IView {
         }
 
         override fun initData() {
-         /*  val saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
-            val userId = saveAndGetUIdSessIdUtil.getUserId()
-            val sessionId = saveAndGetUIdSessIdUtil.getSessionId()
-            if(TextUtils.isEmpty(sessionId)){
-                myToast("请先登录")
-                startActivity<LoginActivity>()
-            }else{
-                mPresenter.findUserWallet(userId,sessionId)
-                mPresenter.findUserConsummtion(userId,sessionId,1,5)
-            }*/
-            mPresenter.findUserWallet(244,"1590407578236244")
-            mPresenter.findUserConsummtion(244,"1590407578236244",1,5)
+          val saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
+            val id = saveAndGetUIdSessIdUtil.getInt("id")
+            val sessionId = saveAndGetUIdSessIdUtil.getString("sessionId")
+            mPresenter.findUserWallet(id,sessionId)
+            mPresenter.findUserConsummtion(id,sessionId,1,100)
         }
 
         override fun layoutId(): Int {

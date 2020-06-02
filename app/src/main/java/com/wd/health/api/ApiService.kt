@@ -1,11 +1,9 @@
 package com.bw.doctor.base.api
 import com.wd.health.entity.*
-import com.wd.health.entity.EmailCodeEntity
-import com.wd.health.entity.LoginEntity
-import com.wd.health.entity.RegEntity
-import com.wd.health.entity.userentity.FindUserConsumption
-import com.wd.health.entity.userentity.FindUserWalletEntity
+import com.wd.health.entity.userentity.*
 import io.reactivex.Observable
+import kotlinx.android.parcel.RawValue
+import org.reactivestreams.Subscriber
 import retrofit2.http.*
 
 /**
@@ -15,37 +13,41 @@ import retrofit2.http.*
  * @CreateDate: 2020/5/19 19:33
  */
 interface ApiService {
-   //首页轮播图
-   @GET(Api.BANNER_SHOW)
-   fun getBanner():Observable<BannerEntity>
-   //查询科室列表
-   @GET(Api.KESHI_LIST)
-   fun getKeShiList():Observable<KeShiEntity>
-   //健康咨询板块
-   @GET(Api.ZIXUN)
-   fun getZiXun():Observable<ZiXunEntity>
-   //健康咨询列表
-   @GET(Api.ZIXUN_LIST)
-   fun getZiXunList(@Query("plateId") plateId:Int, @Query("page") page:Int, @Query("count") count:Int):Observable<ZiXunListEntity>
+    //首页轮播图
+    @GET(Api.BANNER_SHOW)
+    fun getBanner():Observable<BannerEntity>
+    //查询科室列表
+    @GET(Api.KESHI_LIST)
+    fun getKeShiList():Observable<KeShiEntity>
+    //健康咨询板块
+    @GET(Api.ZIXUN)
+    fun getZiXun():Observable<ZiXunEntity>
+    //健康咨询列表
+    @GET(Api.ZIXUN_LIST)
+    fun getZiXunList(@Query("plateId") plateId:Int, @Query("page") page:Int, @Query("count") count:Int):Observable<ZiXunListEntity>
     //健康咨询详情
     @GET(Api.ZIXUN_XIANGQING)
     fun getZiXunXiagQing(@Query("infoId") infoId:Int):Observable<ZiXunXiangQingEntity>
-   //根据科室查询对应病症
-   @GET(Api.BINGZHENG)
-   fun getBingZheng(@Query("departmentId") departmentId:Int):Observable<BingZhengEntity>
-   //查询常见病症详情
-   @GET(Api.BINGZHENG_XIANGQING)
-   fun getBingZhengXiangQing(@Query("id") id:Int):Observable<BingZhengXiangQingEntity>
+    //根据科室查询对应病症
+    @GET(Api.BINGZHENG)
+    fun getBingZheng(@Query("departmentId") departmentId:Int):Observable<BingZhengEntity>
+    //查询常见病症详情
+    @GET(Api.BINGZHENG_XIANGQING)
+    fun getBingZhengXiangQing(@Query("id") id:Int):Observable<BingZhengXiangQingEntity>
 
-   //药品科目分类列表查询
-   @GET(Api.YAOPIN)
-   fun getYaoPin():Observable<YaoPinEntity>
-   //根据药品类目查询常见药品
-   @GET(Api.YAOPIN_LIST)
-   fun getYaoPinList(@Query("drugsCategoryId") drugsCategoryId:Int,@Query("page") page:Int, @Query("count") count:Int):Observable<YaoPinListEntity>
-   //查询常见药品详情
-   @GET(Api.YAOPIN_XIANGQING)
-   fun getYaoPinXiangQing(@Query("id") id:Int):Observable<YaoPinXiangQingEntity>
+    //药品科目分类列表查询
+    @GET(Api.YAOPIN)
+    fun getYaoPin():Observable<YaoPinEntity>
+    //根据药品类目查询常见药品
+    @GET(Api.YAOPIN_LIST)
+    fun getYaoPinList(@Query("drugsCategoryId") drugsCategoryId:Int,@Query("page") page:Int, @Query("count") count:Int):Observable<YaoPinListEntity>
+    //查询常见药品详情
+    @GET(Api.YAOPIN_XIANGQING)
+    fun getYaoPinXiangQing(@Query("id") id:Int):Observable<YaoPinXiangQingEntity>
+/*
+    //查询问诊医生列表
+    @GET(Api.WENZHEN_YISHEN)
+    fun getWenZhenYiSheng(@Query("deptId") deptId:Int):Observable<WenZhenYiShengEntity>*/
 
     //查询问诊医生列表
     @GET(Api.WENZHEN_YISHEN)
@@ -67,11 +69,7 @@ interface ApiService {
    //注册
    @FormUrlEncoded
    @POST(Api.REGISTER)
-   fun register(@Field("email") email:String,
-                @Field("code") code:Int,
-                @Field("pwd1") pwd1:String,
-                @Field("pwd2") pwd2:String
-                ):Observable<RegEntity>
+   fun register(@Field("email") email:String, @Field("code") code:Int, @Field("pwd1") pwd1:String, @Field("pwd2") pwd2:String):Observable<RegEntity>
     //查找用户钱包
     @GET(Api.Find_USER_WALLET)
     fun findUserWallet(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserWalletEntity>
@@ -79,4 +77,46 @@ interface ApiService {
     @GET(Api.FIND_USER_CONSUMPTION)
     fun findUserConsumption(@Header("userId") userId:Int,@Header("sessionId") sessionId:String,
                             @Query("page") page:Int, @Query("count") count:Int):Observable<FindUserConsumption>
+    //查看用户档案
+    @GET(Api.FIND_USER_ARCHIVES)
+    fun findUserArchives(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserArchiverEntity>
+    //----------------------------------------------------------------------------------------------------------------------
+
+     //查询用户当天是否签到
+    @GET(Api.FIND_USER_SIGN_TODAY)
+    fun findUserSignToday(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserSignToadyEntity>
+
+    //用户签到
+
+    @POST(Api.ADD_USER_SIGN)
+    fun addUserSign(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<UserAddSignEntity>
+
+    //查询未读消息
+    @GET(Api.FIND_USER_NOTICE_READ_NUM)
+    fun findUserNoticeReadNum(@Header("userId") userId:Int,@Header("sessionId") sessionId:String):Observable<FindUserNoticeReadNumEntity>
+
+   //修改用户密码
+    @FormUrlEncoded
+    @PUT(Api.UPDATE_USER_PWD)
+    fun  updateUserPwd(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                       @Field("oldPwd") oldPwd:String, @Field("newPwd") newPwd:String):Observable<UpdatePwdEntity>
+
+    //查询用户资讯收藏列表
+    @GET(Api.FIND_USERINFO_COLLECTION)
+    fun findUserInfoCollection(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                               @Query("page") page: Int ,   @Query("count") count: Int):Observable<FindUserInfoCollectionEntity>
+        //查询用户病友圈收藏列表
+    @GET(Api.FIND_USER_SICK_COLLECTION)
+    fun findUserSickClooection(@Header("userId") userId:Int, @Header("sessionId") sessionId:String,
+                               @Query("page") page: Int ,   @Query("count") count: Int):Observable<FindUserSickCollectionEntity>
+
+   //校验验证码
+    @FormUrlEncoded
+    @POST(Api.CHECK_CODE)
+    fun checkCode(@Field("email") email: String,@Field("code") code: String):Observable<CheckCodeEntity>
+
+    //重置密码
+    @FormUrlEncoded
+    @PUT(Api.RESETTING_PWD)
+    fun resettingPwd(@Field("email") email: String,@Field("pwd1") pwd1: String,@Field("pwd2") pwd2: String):Observable<ResettingPwdEntity>
 }

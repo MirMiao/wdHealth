@@ -16,6 +16,7 @@ import com.wd.health.util.SaveAndGetUIdSessIdUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.util.*
 
 /**
  * 时间 :2020/5/23  15:53
@@ -28,6 +29,7 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
     }
 
     override fun initListener(savedInstanceState: Bundle?) {
+
         iv_pwd.setOnClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
                 if(iv_pwd.isChecked){
@@ -64,6 +66,12 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
                startActivity<RegisterActivity>()
             }
         })
+        tv_forgetPwd.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(p0: View?) {
+                        startActivity<ForgetPwdActivity>()
+
+            }
+        })
     }
     override fun initData() {
     }
@@ -75,10 +83,24 @@ class LoginActivity:BaseActivity<LogPresenter>(),LoginContract.IView {
     override fun seccess(loginEntity: LoginEntity) {
         myToast(loginEntity.message)
         if("0000".equals(loginEntity.status)){
-            //把用户的userId和sessionId存储起来
+            val result = loginEntity.result
+            //把用户的userId和sessionId存储起来   存储集合
            var  saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()
-            saveAndGetUIdSessIdUtil.savaUserId(loginEntity.result.id)
-            saveAndGetUIdSessIdUtil.savaSessionId(loginEntity.result.sessionId)
+            saveAndGetUIdSessIdUtil.savaInt("age",result.age)
+            saveAndGetUIdSessIdUtil.savaInt("height",result.height)
+            saveAndGetUIdSessIdUtil.savaInt("id",result.id)
+            saveAndGetUIdSessIdUtil.savaInt("sex",result.sex)
+            saveAndGetUIdSessIdUtil.savaInt("weight",result.weight)
+            saveAndGetUIdSessIdUtil.savaInt("whetherBingWeChat",result.whetherBingWeChat)
+            saveAndGetUIdSessIdUtil.savaString("email",result.email)
+            saveAndGetUIdSessIdUtil.savaString("headPic",result.headPic)
+            saveAndGetUIdSessIdUtil.savaString("invitationCode",result.invitationCode)
+            saveAndGetUIdSessIdUtil.savaString("jiGuangPwd",result.jiGuangPwd)
+            saveAndGetUIdSessIdUtil.savaString("nickName",result.nickName)
+            saveAndGetUIdSessIdUtil.savaString("sessionId",result.sessionId)
+            saveAndGetUIdSessIdUtil.savaString("userName",result.userName)
+
+            startActivity<MainActivity>()
         }
     }
     override fun failur(throwable: Throwable) {
