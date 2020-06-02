@@ -34,7 +34,7 @@ class ZiXunXiangQingActivity : BaseActivity<ZiXunXiangQingPresenter>(),ZiXunXian
 
         zixunxiangqing_recy.layoutManager=LinearLayoutManager(this)
 
-        zixunxiangqing_shouchang.setOnClickListener({})
+
         zixunxiangqing_fenxiang.setOnClickListener({})
 
     }

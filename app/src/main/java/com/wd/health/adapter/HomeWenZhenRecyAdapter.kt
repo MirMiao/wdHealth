@@ -1,15 +1,18 @@
 package com.wd.health.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bw.doctor.base.utils.RetrofitUtils
 import com.wd.health.R
 import com.wd.health.entity.KeShiResult
+import com.wd.health.view.activity.WenZhenActivity
 import kotlinx.android.synthetic.main.recy_home_wenzhen.view.*
 
 class HomeWenZhenRecyAdapter: RecyclerView.Adapter<HomeWenZhenRecyAdapter.WenZhenViewHolder> {
@@ -34,17 +37,25 @@ class HomeWenZhenRecyAdapter: RecyclerView.Adapter<HomeWenZhenRecyAdapter.WenZhe
         val get = result.get(position)
         val pic = get.pic
         val departmentName = get.departmentName
-        val wenzhenIm = holder.itemView.wenzhen_im
-        val wenzhenTv = holder.itemView.wenzhen_tv
+        val id = get.id
+
+
+        val wenzhenIm = holder.wenzhenim
+        val wenzhenTv = holder.wenzhentv
         RetrofitUtils.getRoundphoto(pic,wenzhenIm)
         wenzhenTv.setText(departmentName)
+
+        wenzhenIm.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                startActivity(context,Intent(context,WenZhenActivity::class.java),null)
+            }
+        })
+
     }
 
     class WenZhenViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        init {
             val wenzhenim = itemView.findViewById<ImageView>(R.id.wenzhen_im)
             val wenzhentv= itemView.findViewById<TextView>(R.id.wenzhen_tv)
-        }
     }
 
 }
