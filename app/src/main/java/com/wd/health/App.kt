@@ -12,6 +12,7 @@ import org.greenrobot.eventbus.EventBus
  * 功能 :
  */
 class App:Application() {
+    private val App_ID="wxe3fcbe8a55cd33ff"
     //以后就可以直接在任意的类里面使用WdTools.getContext()获取Context对象了。
     companion object {
         var context:Application? = null
@@ -25,5 +26,6 @@ class App:Application() {
         context=this
         // 主要是添加下面这句代码
         MultiDex.install(this);
+
     }
 }

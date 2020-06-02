@@ -112,4 +112,8 @@ interface ApiService {
     @FormUrlEncoded
     @PUT(Api.RESETTING_PWD)
     fun resettingPwd(@Field("email") email: String,@Field("pwd1") pwd1: String,@Field("pwd2") pwd2: String):Observable<ResettingPwdEntity>
+
+    //微信登陆
+    @POST(Api.WX_LOGIN)
+    fun wxLogin(@Field("wxCode") wxCode:Int)
 }

@@ -53,7 +53,10 @@ object Api {
 
 
     const val CHECK_CODE:String="health/user/v1/checkCode" //校验验证码
-    const val RESETTING_PWD:String="health/user/v1/resetUserPwd" //重置密码
+
+    const val RESETTING_PWD:String="health/user/v1/resetUserPwd" //重置密码 重置密码
+
+    const val WX_LOGIN:String="health/user/v1/weChatLogin" //微信登陆
 
 
 

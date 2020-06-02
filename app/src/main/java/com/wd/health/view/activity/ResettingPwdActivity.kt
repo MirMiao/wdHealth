@@ -80,7 +80,9 @@ class ResettingPwdActivity:BaseActivity<ResettingPwdPresenter>(),ResettingPwdCon
                     myToast("两次密码输入的不一致")
                     return
                 }
+                //调用重置密码
               mPresenter.resettingPwd(email,encryptByPublicKey,encryptByPublicKey)
+
             }
         })
     }
@@ -90,6 +92,7 @@ class ResettingPwdActivity:BaseActivity<ResettingPwdPresenter>(),ResettingPwdCon
     }
 
     override fun seccess(resettingPwdEntity: ResettingPwdEntity) {
+        //如果成功的话就会跳进登陆页面
        myToast(resettingPwdEntity.message)
         if("0000".equals(resettingPwdEntity.status)){
             val saveAndGetUIdSessIdUtil=SaveAndGetUIdSessIdUtil()

@@ -96,4 +96,6 @@ dependencies {
 
     //androidx版本  Tablayout依赖 :
     implementation 'com.android.support:design:29.0.0'
+     //wxLogin
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 }
